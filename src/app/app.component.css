@@ -1,0 +1,18 @@
+.fill {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+mat-sidenav {
+    background-color: #fafafa;
+    color:rgba(0,0,0,.87);
+    padding: 10px;
+    text-align: center;
+}
+
+mat-sidenav-content {
+    padding: 10px;
+}
