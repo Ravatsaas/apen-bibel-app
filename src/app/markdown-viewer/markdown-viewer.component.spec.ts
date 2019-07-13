@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MarkdownModule } from 'ngx-markdown';
+import { MatCardModule } from '@angular/material/card';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { MarkdownViewerComponent } from './markdown-viewer.component';
 
@@ -8,7 +12,12 @@ describe('MarkdownViewerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MarkdownViewerComponent ]
+      declarations: [ MarkdownViewerComponent ],
+      imports: [
+        MarkdownModule.forRoot(),
+        MatCardModule,
+        RouterTestingModule,
+      HttpClientTestingModule]
     })
     .compileComponents();
   }));

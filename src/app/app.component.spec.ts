@@ -1,27 +1,61 @@
 import { TestBed, async } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatMenuModule } from '@angular/material/menu';
+import { BibleNavigationButtonComponent } from './bible-navigation-button/bible-navigation-button.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MarkdownModule } from 'ngx-markdown';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.component';
+import { FrontPageComponent } from './front-page/front-page.component';
+
 import { AppComponent } from './app.component';
+
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        AppComponent
+        AppComponent,
+        BibleNavigationButtonComponent,
+        MarkdownViewerComponent,
+        FrontPageComponent
       ],
+      imports: [
+        MatSidenavModule,
+        MatTreeModule,
+        MatMenuModule,
+        RouterTestingModule,
+        NoopAnimationsModule,
+        HttpClientTestingModule,
+        MarkdownModule,
+        MatButtonModule,
+        MatCardModule
+      ]
     }).compileComponents();
   }));
+
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  it(`should have as title 'app'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
-  }));
-  it('should render title in a h1 tag', async(() => {
+
+  it('should contain a side nav', async() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to apen-bibel!');
-  }));
+    expect(compiled.querySelector('mat-sidenav-container').querySelector('mat-sidenav')).toBeTruthy();
+  });
+
+  it('should contain a router outlet', async() => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('router-outlet')).toBeTruthy();
+  })
+
 });
