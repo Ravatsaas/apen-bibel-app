@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ContentService } from '../../services/content.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { switchMap } from 'rxjs/operators';
@@ -11,20 +11,43 @@ import { switchMap } from 'rxjs/operators';
 })
 export class MarkdownViewerComponent implements OnInit {
 
-  public document$: Observable<string>;
-  public p: object;
+  public document$: Observable<string | undefined>;
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private contentService: ContentService
   ) {}
 
   ngOnInit() {
     this.document$ = this.route.paramMap.pipe(
       switchMap((params: ParamMap) =>
-        this.contentService.getDocument(params.get('book'), params.get('chapter')))
+        this.getDocument(params.get('book'), params.get('chapter'))
+      )
     );
   }
 
+  public getDocument(book: string, chapter: string): Observable<string> {
+    if (!book || !chapter) {
+      return new Observable<string>();
+    }
+
+    return this.contentService.getTableOfContent().pipe(
+      switchMap(toc => {
+        const bookObj = toc.find(b => b.lbl === book);
+
+        if (!bookObj) {
+          console.log(`Could not find book ${book} in the table of content`);
+          return new Observable<string>();
+        }
+
+        const chapterObj = bookObj.toc.find(c => c.lbl === chapter);
+        if (!chapterObj) {
+          console.log(`Could not find chapter ${chapter} in the table of content for ${book}`);
+          return new Observable<string>();
+        }
+
+        return this.contentService.getDocument(bookObj.dir, chapterObj.fnm);
+      })
+    );
+  }
 }

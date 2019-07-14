@@ -4,13 +4,15 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatMenuModule } from '@angular/material/menu';
-import { BibleNavigationButtonComponent } from './bible-navigation-button/bible-navigation-button.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MarkdownModule } from 'ngx-markdown';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.component';
 import { FrontPageComponent } from './front-page/front-page.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BibleNavigationComponent } from './bible-navigation/bible-navigation.component';
 
 import { AppComponent } from './app.component';
 
@@ -20,9 +22,10 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        BibleNavigationButtonComponent,
+        SidebarComponent,
         MarkdownViewerComponent,
-        FrontPageComponent
+        FrontPageComponent,
+        BibleNavigationComponent
       ],
       imports: [
         MatSidenavModule,
@@ -33,7 +36,8 @@ describe('AppComponent', () => {
         HttpClientTestingModule,
         MarkdownModule,
         MatButtonModule,
-        MatCardModule
+        MatCardModule,
+        FontAwesomeModule
       ]
     }).compileComponents();
   }));

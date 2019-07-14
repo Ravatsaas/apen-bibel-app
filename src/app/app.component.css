@@ -7,10 +7,7 @@
   }
 
 mat-sidenav {
-    background-color: #fafafa;
-    color:rgba(0,0,0,.87);
-    padding: 10px;
-    text-align: center;
+    border: 0;
 }
 
 mat-sidenav-content {

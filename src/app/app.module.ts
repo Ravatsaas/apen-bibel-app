@@ -5,40 +5,62 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatTreeModule } from '@angular/material/tree';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MarkdownModule } from 'ngx-markdown';
 import { AppComponent } from './app.component';
-import { BibleNavigationButtonComponent } from './bible-navigation-button/bible-navigation-button.component';
 import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.component';
 import { FrontPageComponent } from './front-page/front-page.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faHome, faBookReader, faAngleLeft, faAngleRight, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { BibleNavigationComponent, BibleNavigationDialogComponent } from './bible-navigation/bible-navigation.component';
 
 const appRoutes: Routes = [
   { path: 'tekst/:book/:chapter', component: MarkdownViewerComponent },
+  { path: 'tekst', component: MarkdownViewerComponent },
   { path: '**', component: FrontPageComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    BibleNavigationButtonComponent,
     MarkdownViewerComponent,
-    FrontPageComponent
+    FrontPageComponent,
+    SidebarComponent,
+    BibleNavigationComponent,
+    BibleNavigationDialogComponent
+  ],
+  entryComponents: [
+    BibleNavigationDialogComponent
   ],
   imports: [
     BrowserModule,
     MarkdownModule.forRoot(),
     RouterModule.forRoot(appRoutes),
     MatSidenavModule,
-    MatTreeModule,
     MatButtonModule,
-    MatMenuModule,
+    MatDialogModule,
+    MatStepperModule,
     MatCardModule,
+    MatToolbarModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+
+export class AppModule {
+  constructor() {
+    library.add(faHome);
+    library.add(faBookReader);
+    library.add(faAngleLeft);
+    library.add(faAngleRight);
+    library.add(faLocationArrow);
+  }
+}
