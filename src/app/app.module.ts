@@ -15,9 +15,8 @@ import { MarkdownViewerComponent } from './markdown-viewer/markdown-viewer.compo
 import { FrontPageComponent } from './front-page/front-page.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHome, faBookReader, faAngleLeft, faAngleRight, faLocationArrow } from '@fortawesome/free-solid-svg-icons';
-import { BibleNavigationComponent, BibleNavigationDialogComponent } from './bible-navigation/bible-navigation.component';
+import { BibleNavigationComponent } from './bible-navigation/bible-navigation.component';
+import { BibleNavigationDialogComponent } from './bible-navigation/bible-navigation-dialog-component';
 
 const appRoutes: Routes = [
   { path: 'tekst/:book/:chapter', component: MarkdownViewerComponent },
@@ -26,41 +25,31 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MarkdownViewerComponent,
-    FrontPageComponent,
-    SidebarComponent,
-    BibleNavigationComponent,
-    BibleNavigationDialogComponent
-  ],
-  entryComponents: [
-    BibleNavigationDialogComponent
-  ],
-  imports: [
-    BrowserModule,
-    MarkdownModule.forRoot(),
-    RouterModule.forRoot(appRoutes),
-    MatSidenavModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatStepperModule,
-    MatCardModule,
-    MatToolbarModule,
-    BrowserAnimationsModule,
-    HttpClientModule,
-    FontAwesomeModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MarkdownViewerComponent,
+        FrontPageComponent,
+        SidebarComponent,
+        BibleNavigationComponent,
+        BibleNavigationDialogComponent
+    ],
+    imports: [
+        BrowserModule,
+        MarkdownModule.forRoot(),
+        RouterModule.forRoot(appRoutes),
+        MatSidenavModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatStepperModule,
+        MatCardModule,
+        MatToolbarModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FontAwesomeModule
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 
 export class AppModule {
-  constructor() {
-    library.add(faHome);
-    library.add(faBookReader);
-    library.add(faAngleLeft);
-    library.add(faAngleRight);
-    library.add(faLocationArrow);
-  }
 }

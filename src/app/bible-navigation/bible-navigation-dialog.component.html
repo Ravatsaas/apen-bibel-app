@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>Hvor skal vi?</h1>
 <div mat-dialog-content>
-    <mat-vertical-stepper [linear]="isLinear" #stepper>
+    <mat-vertical-stepper #stepper>
         <mat-step>
             <ng-template matStepLabel>Velg bok</ng-template>
             <button *ngFor="let book of toc$ | async" mat-button matStepperNext (click)="selectedBook = book">{{book.lbl}}</button>

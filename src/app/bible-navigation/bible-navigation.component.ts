@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/internal/Observable';
 import { map } from 'rxjs/operators';
-import { IBookModel, IChapterModel } from '../../model/IBookModel';
-import { ContentService } from '../../services/content.service';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
+import { BibleNavigationDialogComponent } from './bible-navigation-dialog-component';
 
 interface BibleLocation {
   book: string;
@@ -17,6 +16,8 @@ interface BibleLocation {
   styleUrls: ['./bible-navigation.component.css']
 })
 export class BibleNavigationComponent implements OnInit {
+  faLocationArrow = faLocationArrow;
+
   public selectedBook: string;
   public selectedChapter: string;
   public canGoToPrevious = false;
@@ -62,27 +63,5 @@ export class BibleNavigationComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
-  }
-}
-
-@Component({
-  selector: 'app-bible-navigation-dialog',
-  templateUrl: './bible-navigation-dialog.component.html'
-})
-export class BibleNavigationDialogComponent implements OnInit {
-  public toc$: Observable<IBookModel[]>;
-  public selectedBook: IBookModel;
-
-  constructor(
-    public dialogRef: MatDialogRef<BibleNavigationDialogComponent>,
-    private contentService: ContentService
-    ) {}
-
-  ngOnInit() {
-    this.toc$ = this.contentService.getTableOfContent();
-  }
-
-  onClose(): void {
-    this.dialogRef.close();
   }
 }

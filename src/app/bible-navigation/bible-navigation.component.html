@@ -3,7 +3,7 @@
 </button> -->
 
     <button mat-button aria-label="Velg bok og kapittel" (click)="openDialog()">
-        <fa-icon icon="location-arrow"></fa-icon> {{selectedBook}} {{selectedChapter}}
+        <fa-icon [icon]="faLocationArrow"></fa-icon> {{selectedBook}} {{selectedChapter}}
     </button>
 
 <!-- <button mat-button  aria-label="Neste kapittel">

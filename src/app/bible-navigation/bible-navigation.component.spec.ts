@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialogModule } from '@angular/material/dialog';
-
 import { BibleNavigationComponent } from './bible-navigation.component';
 
 

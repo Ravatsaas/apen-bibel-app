@@ -5,11 +5,11 @@
     </div>
     
     <a class="menu-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-        <fa-icon icon="home" size="lg"></fa-icon>
+        <fa-icon [icon]="faHome" size="lg"></fa-icon>
     </a>
     
     <a class="menu-item" routerLink="/tekst" routerLinkActive="active">
-        <fa-icon icon="book-reader" size="lg"></fa-icon>
+        <fa-icon [icon]="faBookReader" size="lg"></fa-icon>
     </a>
     
     <!-- This extends the border down the remaining vertical space of the sidebar -->

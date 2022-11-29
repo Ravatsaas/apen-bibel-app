@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, waitForAsync } from '@angular/core/testing';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -18,7 +18,7 @@ import { AppComponent } from './app.component';
 
 
 describe('AppComponent', () => {
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
@@ -42,24 +42,24 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', async(() => {
+  it('should create the app', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
 
-  it('should contain a side nav', async() => {
+  it('should contain a side nav', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('mat-sidenav-container').querySelector('mat-sidenav')).toBeTruthy();
-  });
+  }));
 
-  it('should contain a router outlet', async() => {
+  it('should contain a router outlet', waitForAsync(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('router-outlet')).toBeTruthy();
-  })
+  }));
 
 });
