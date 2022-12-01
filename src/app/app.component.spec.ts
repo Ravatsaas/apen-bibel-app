@@ -13,7 +13,6 @@ import { FrontPageComponent } from './front-page/front-page.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BibleNavigationComponent } from './bible-navigation/bible-navigation.component';
-
 import { AppComponent } from './app.component';
 
 

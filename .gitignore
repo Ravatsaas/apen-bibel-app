@@ -39,3 +39,4 @@ testem.log
 .DS_Store
 Thumbs.db
 .node-version
+.vscode/launch.json

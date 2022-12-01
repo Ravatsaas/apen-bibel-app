@@ -8,3 +8,7 @@ body {
 mat-card {
     padding: 16px;
 }
+
+.formatted-text {
+    white-space: pre-wrap;
+}

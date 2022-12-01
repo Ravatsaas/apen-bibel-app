@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { ContentService } from '../../services/content.service';
 import { Observable } from 'rxjs/internal/Observable';
 import { switchMap } from 'rxjs/operators';
+import { MarkdownService } from 'ngx-markdown';
 
 @Component({
   selector: 'app-markdown-viewer',
@@ -15,7 +16,8 @@ export class MarkdownViewerComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private contentService: ContentService
+    private contentService: ContentService,
+    private markdownService: MarkdownService
   ) {}
 
   ngOnInit() {
@@ -24,6 +26,10 @@ export class MarkdownViewerComponent implements OnInit {
         this.getDocument(params.get('book'), params.get('chapter'))
       )
     );
+
+    this.markdownService.renderer.code = (text: string, language: string) => {
+      return `<p class="formatted-text">${text}</p>`;
+    };
   }
 
   public getDocument(book: string, chapter: string): Observable<string> {

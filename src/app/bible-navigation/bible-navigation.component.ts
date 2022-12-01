@@ -4,6 +4,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { faLocationArrow } from '@fortawesome/free-solid-svg-icons';
 import { BibleNavigationDialogComponent } from './bible-navigation-dialog-component';
+import { MatButton } from '@angular/material/button';
 
 interface BibleLocation {
   book: string;

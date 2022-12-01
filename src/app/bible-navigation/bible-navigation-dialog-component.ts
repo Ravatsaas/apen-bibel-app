@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/internal/Observable';
 import { IBookModel } from '../../model/IBookModel';
 import { ContentService } from '../../services/content.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MatDialog } from '@angular/material/dialog';
 
 @Component({
     selector: 'app-bible-navigation-dialog',
