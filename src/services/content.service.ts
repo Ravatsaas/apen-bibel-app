@@ -18,6 +18,6 @@ export class ContentService {
   }
 
   getDocument(book: string, chapter: string): Observable<string> {
-    return this.http.get(this.documentUrlRoot + '/' + book + '/' + chapter, {responseType: 'text'});
+    return this.http.get(this.documentUrlRoot + book + '/' + chapter, {responseType: 'text'});
   }
 }
